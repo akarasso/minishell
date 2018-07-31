@@ -1,6 +1,19 @@
-#include "minishell.h"
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   env.c                                              :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: akarasso <akarasso@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2018/07/31 16:31:01 by akarasso          #+#    #+#             */
+/*   Updated: 2018/07/31 18:17:35 by akarasso         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
-char	*get_env_value(char *key)
+#include "minishell.h"
+#include "libft.h"
+
+char	*get_env_value(char **env, char *elem)
 {
-	
+
 }
