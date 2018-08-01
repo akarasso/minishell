@@ -1,22 +1,41 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   parse.c                                            :+:      :+:    :+:   */
+/*   ft_strtab.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: akarasso <akarasso@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/07/31 16:30:11 by akarasso          #+#    #+#             */
-/*   Updated: 2018/08/01 15:21:44 by akarasso         ###   ########.fr       */
+/*   Created: 2018/07/31 20:39:00 by akarasso          #+#    #+#             */
+/*   Updated: 2018/07/31 20:41:07 by akarasso         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
-#include "minishell.h"
-
-int		parse(char *line)
+int		strtab_count(char **tab)
 {
-	char **tab;
+	int i;
 
-	tab = ft_strsplit(line, ' ');
-	return (1);
+	i = 0;
+	if (tab)
+	{
+		while (tab[i])
+			i++;
+	}
+	return (i);
+}
+
+void	strtab_free(char **tab)
+{
+	int i;
+
+	i = 0;
+	if (tab)
+	{
+		while (tab[i])
+		{
+			free(tab[i]);
+			i++;
+		}
+		free(tab[i]);
+		free(tab);
+	}
 }

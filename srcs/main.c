@@ -6,24 +6,37 @@
 /*   By: akarasso <akarasso@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/07/31 17:12:57 by akarasso          #+#    #+#             */
-/*   Updated: 2018/07/31 18:35:03 by akarasso         ###   ########.fr       */
+/*   Updated: 2018/08/01 15:17:07 by akarasso         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 #include "minishell.h"
 
-int main(int argc, char **argv, char **env)
+t_mini	*init()
 {
-	char *line;
+	t_mini *mini;
 
-	printf("%p\n", env);
-	line = 0;
-	while (get_next_line(0, &line) > 0)
+	if (!(mini = (t_mini*)malloc(sizeof(t_mini))))
+		return (0);
+	mini->env = 0;
+	return (mini);
+}
+
+int		main(int argc, char **argv, char **env)
+{
+	t_mini	*mini;
+	char	*line;
+	t_env	*e;
+	int		i;
+
+	if ((mini = init()))
 	{
-		ft_putstr("$>");
-
-		ft_strdel(&line);
+		env_to_lst(mini, env);
+		e = get_env_value(mini, "PWD");
+		add_env_value(mini, "test", "VALUUUUUUUE");
+		add_env_value(mini, "test2", 0);
+		env_show(mini->env);
 	}
 	return 0;
 }

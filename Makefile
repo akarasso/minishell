@@ -1,12 +1,13 @@
 CC	= gcc
 
-CFLAGS	= -g #-Wall -Werror -Wextra
+CFLAGS	= #-Wall -Werror -Wextra
 
 NAME	= minishell
 
 HEADERS	= ./includes ./libft/includes
 
-SOURCES	= ./srcs/env.c	./srcs/main.c	./srcs/parse.c	
+SOURCES	= ./srcs/env.c		./srcs/env_to_lst.c	./srcs/main.c			\
+	./srcs/parse.c		
 
 OBJ	= $(SOURCES:.c=.o)
 
