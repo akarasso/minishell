@@ -1,0 +1,8 @@
+*.o
+*.a
+.D*
+*.dSYM
+a.out
+test
+42sh
+*/*.gch
