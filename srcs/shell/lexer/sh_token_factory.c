@@ -11,9 +11,7 @@ void	sh_newtkn_word(char **cmd, t_shell *sh)
 	else
 		new = ft_new_str_token(WORD, cmd, goto_end_word);
 	if (!new)
-	{
-		//Malloc error handle
-	}
+		return ;
 	ft_dlst_pushback(sh->lexer, new);
 }
 
@@ -22,10 +20,7 @@ void	sh_newtkn_op(int value, char **cmd, t_shell *sh)
 	t_int_token	*new;
 
 	if (!(new = (t_int_token*)malloc(sizeof(*new))))
-	{
-		//Malloc error
 		return ;
-	}
 	new->type = OP;
 	new->value = value;
 	(*cmd) += ft_strlen(g_shell_op[value]);
@@ -40,17 +35,11 @@ void	sh_newtkn_redirect(int index, char **cmd, t_shell *sh)
 	io_number = 0;
 	sh_redirect_strcmp(*cmd, g_shell_redirect[index], &io_number);
 	if (!(new = ft_new_int_token(IO_NUMBER, 0)))
-	{
-		//Malloc Error
 		return ;
-	}
 	new->value = io_number;
 	ft_dlst_pushback(sh->lexer, new);
 	if (!(new = ft_new_int_token(REDIRECT, 0)))
-	{
-		//Malloc Error
 		return ;
-	}
 	new->value = index;
 	ft_dlst_pushback(sh->lexer, new);
 	while (ft_isdigit(**cmd))

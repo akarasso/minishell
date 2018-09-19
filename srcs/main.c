@@ -86,8 +86,6 @@ int			main(int argc, char **argv, char **env)
 	(void)argv;
 	if ((sh = get_new_shell(env)))
 		sh_input_loop(sh);
-	else
-		ft_putendl("Fail to init shell vars..");
 	del_shell(sh);
 	return (0);
 }
