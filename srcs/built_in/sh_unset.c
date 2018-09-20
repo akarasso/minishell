@@ -12,9 +12,18 @@ int		sh_unset(t_cmd *cmd)
 	}
 	argv = &cmd->argv[1];
 	ret = CMD_SUCCESS;
-	while (argv)
+	while (*argv)
 	{
-		sh_env_set_protected(cmd->shell->env, *argv, *(argv + 1));
+		if (sh_env_get(cmd->shell->env->private, *argv))
+		{
+			ft_putendl("Read only variable");
+			ret = CMD_ERROR;
+		}
+		else
+		{
+			sh_env_del(cmd->shell->env->public, *argv);
+			sh_env_del(cmd->shell->env->local, *argv);
+		}
 		argv++;
 	}
 	return (ret);

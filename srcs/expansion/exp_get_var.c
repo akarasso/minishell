@@ -47,10 +47,17 @@ static void				apply_rule(t_varsexp *vexp)
 		vexp->res = vexp->rule->set(vexp, vexp->str, val, word);
 }
 
-static	char			*exp_res(t_varsexp *vexp)
+static	char			*exp_res_rules(t_varsexp *vexp)
 {
 	char	*tmp;
 
+	ft_strrmvchr(ft_strlastchr(vexp->str));
+	ft_strrmvchr(vexp->str);
+	if (*vexp->str == '#')
+	{
+		ft_strrmvchr(vexp->str);
+		vexp->format = NBR_FORMAT;
+	}
 	if ((vexp->rule = get_rules(vexp->str)))
 		apply_rule(vexp);
 	else
@@ -67,26 +74,26 @@ static	char			*exp_res(t_varsexp *vexp)
 	return (vexp->res);
 }
 
+static char				*exp_res_norules(t_varsexp *vexp)
+{
+	char	*tmp;
+
+	tmp = env_get_first(vexp->env, vexp->str);
+	vexp->res = (tmp) ? ft_strdup(tmp) : ft_strdup("");
+	return (vexp->res);
+}
+
 char					*exp_get_var(char *str, t_env *env)
 {
 	t_varsexp	vexp;
-	char		*last;
 
+	vexp.format = STR_FORMAT;
 	if (!str)
 		return (ft_strdup(""));
-	last = ft_strlastchr(str);
-	if (*last == '}')
-		ft_strrmvchr(last);
-	if (*str == '{')
-		ft_strrmvchr(str);
-	if (*str == '#') {
-		str++;
-		vexp.format = NBR_FORMAT;
-	}
-	else
-		vexp.format = STR_FORMAT;
 	vexp.env = env;
 	vexp.str = str;
 	vexp.res = 0;
-	return (exp_res(&vexp));
+	if (*str == '{' && *(ft_strlastchr(str)) == '}')
+		return (exp_res_rules(&vexp));
+	return (exp_res_norules(&vexp));
 }

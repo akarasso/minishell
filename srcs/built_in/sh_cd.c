@@ -32,5 +32,6 @@ int			sh_cd(t_cmd *cmd)
 		newdir = ft_strdup(cmd->argv[1]);
 	if (newdir)
 		sh_set_pwd(cmd, newdir);
+	ft_strdel(&newdir);
 	return (CMD_SUCCESS);
 }

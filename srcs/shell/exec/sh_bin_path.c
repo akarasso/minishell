@@ -74,6 +74,7 @@ char	*sh_bin_path(t_shell *sh, char *file, int *ret)
 	char	**tab;
 	char	*fullpath;
 
+	fullpath = 0;
 	if ((tab = get_pathtab(sh)))
 		fullpath = search_with_pathtab(tab, file, ret);
 	if (*ret != CMD_SUCCESS)

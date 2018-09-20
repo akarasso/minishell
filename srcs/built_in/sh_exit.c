@@ -26,6 +26,6 @@ int		sh_exit(t_cmd *cmd)
 	if (!str)
 		return (CMD_ERROR);
 	ret = ft_atoi(str);
-	// le foutre dans la structure du shell ou un truc
+	cmd->shell->force_exit = 1;
 	return (ret);
 }

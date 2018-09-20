@@ -1,10 +1,10 @@
-CC	= gcc
+CC	= gcc -g
 
 CFLAGS	= -Wall -Werror -Wextra
 
 NAME	= libft.a
 
-HEADERS	= ./includes 
+HEADERS	= ./includes
 
 SOURCES	= ./srcs/ast/ft_ast_new.c			./srcs/ast/ft_ast_rsplit.c		./srcs/ast/ft_ast_split.c			\
 	./srcs/btree/ft_btree_find.c		./srcs/btree/ft_btree_new.c		./srcs/btree/ft_btree_push.c			\
@@ -46,7 +46,7 @@ SOURCES	= ./srcs/ast/ft_ast_new.c			./srcs/ast/ft_ast_rsplit.c		./srcs/ast/ft_as
 	./srcs/strtab/ft_strtab_del_one.c	./srcs/strtab/ft_strtab_dup.c		./srcs/strtab/ft_strtab_find_index.c		\
 	./srcs/strtab/ft_strtab_free.c		./srcs/strtab/ft_strtab_iter.c		./srcs/strtab/ft_strtab_join.c			\
 	./srcs/strtab/ft_strtab_len.c		./srcs/strtab/ft_strtab_new.c		./srcs/strtab/ft_strtab_print.c			\
-	./srcs/strtab/ft_strtab_realloc.c	./srcs/strtab/ft_strtab_strncmp_i.c	
+	./srcs/strtab/ft_strtab_realloc.c	./srcs/strtab/ft_strtab_strncmp_i.c
 
 OBJ	= $(SOURCES:.c=.o)
 
@@ -66,11 +66,10 @@ exec	: $(OBJ)
 so	: $(OBJ)
 	$(CC) -fPIC $(CFLAGS) $(SOURCES) -shared -I$(HEADERS)
 
-clean	: 
+clean	:
 	rm -f $(OBJ)
 
 re	: fclean all
 
 fclean	: clean
 	rm -f $(NAME)
-

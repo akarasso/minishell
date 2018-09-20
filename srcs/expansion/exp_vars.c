@@ -55,28 +55,41 @@ static char		*exp_get_key(char *s)
 		return (ft_strsub(s, 0, end - s));
 }
 
+int				exp_vars_exec(char *pos, int *i, char **str, t_cmd *cmd)
+{
+	int		ret;
+	int		lkey;
+	char	*val;
+	char	*key;
+
+	ret = 0;
+	*pos = 0;
+	if ((key = exp_get_key(&(*str)[*i])))
+	{
+		lkey = ft_strlen(key);
+		if ((val = exp_get_var(key, cmd->shell->env)))
+		{
+			(*str) = ft_3strjoinfree((*str), val, &(*str)[*i + lkey], LEFT);
+			ret = ft_strlen(val) - 1;
+			ft_strdel(&val);
+		}
+		ft_strdel(&key);
+	}
+	return (ret);
+}
+
 void			exp_vars(char **str, t_cmd *cmd)
 {
 	char	*start;
 	char	*pos;
-	char	*key;
-	char	*val;
 	int		i;
 
 	start = *str;
 	i = 0;
 	while ((pos = exp_vars_pos(&start[i])))
 	{
-		*pos = 0;
 		i = pos - start + 1;
-		if ((key = exp_get_key(&start[i])))
-		{
-			val = exp_get_var(key, cmd->shell->env);
-			start = ft_3strjoinfree(start, val, &start[i + ft_strlen(key)], LEFT);
-			i += ft_strlen(val) - 1;
-			ft_strdel(&val);
-		}
-		ft_strdel(&key);
+		i += exp_vars_exec(pos, &i, &start, cmd);
 	}
 	*str = start;
 }

@@ -71,8 +71,8 @@ static t_cbuffer	*get_buffer_canal(t_cbuffer **canal, const int fd)
 	{
 		if (!(*canal = (t_cbuffer*)ft_memalloc(sizeof(*lst))))
 			return (0);
+		(*canal)->fd = fd;
 		lst = *canal;
-		lst->fd = fd;
 	}
 	return (lst);
 }

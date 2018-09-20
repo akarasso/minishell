@@ -36,7 +36,7 @@ typedef struct s_shell t_shell;
 # ifdef __linux__
 #  define DEFAULT_HOME "/home"
 # endif
-# ifdef __macos__
+# ifdef __APPLE__
 #  define DEFAULT_HOME "/Users"
 # endif
 
@@ -73,6 +73,7 @@ struct	s_shell
 	t_btree		*func;
 	t_env		*env;
 	int			last_ret;
+	int			force_exit;
 	char		**priv;
 	char		*cmd;
 };
@@ -139,6 +140,7 @@ void		sh_input(char *s);
 void		sh_input_loop(t_shell *sh);
 
 t_shell		*get_new_shell(char **env);
+void		del_shell(t_shell *sh);
 
 
 #endif

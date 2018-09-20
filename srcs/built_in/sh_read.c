@@ -46,7 +46,7 @@ static int	check_key(char **argv)
 	{
 		if (!sh_env_validkey(*argv))
 		{
-			ft_putstr("42sh: read: '");
+			ft_putstr("shell: read: '");
 			ft_putstr(*argv);
 			ft_putendl("' identifiant non valable");
 			return (0);

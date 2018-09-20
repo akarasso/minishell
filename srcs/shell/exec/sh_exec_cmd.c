@@ -22,15 +22,21 @@ static int	sh_exec_fork(t_shell *sh, t_cmd *cmd)
 	char	*fullpath;
 	int		ret;
 
+	if (!sh)
+		return (CMD_ERROR);
 	ret = CMD_SUCCESS;
 	if ((pid = fork()) == -1)
 		return (CMD_ERROR);
 	else if (pid == 0)
 	{
-		fullpath = sh_bin_path(sh, cmd->argv[0], &ret);
-		if (fullpath)
-			execve(fullpath, cmd->argv, 0);
-		return (ret);
+		if (cmd && cmd->argv && cmd->argv[0]) {
+			fullpath = sh_bin_path(sh, cmd->argv[0], &ret);
+			if (fullpath)
+				execve(fullpath, cmd->argv, 0);
+			ft_strdel(&fullpath);
+		}
+		sh_del_cmd(&cmd);
+		exit(ret);
 	}
 	else if (pid > 0)
 		waitpid(pid, &ret, WUNTRACED);

@@ -16,6 +16,11 @@ static void		tree_del(t_btree *tree)
 {
 	if (tree)
 	{
+		if (tree->data)
+		{
+			free(((t_func*)tree->data)->name);
+			free(tree->data);
+		}
 		if (tree->left)
 			tree_del(tree->left);
 		if (tree->right)
@@ -74,6 +79,7 @@ void	del_shell(t_shell *sh)
 	{
 		tree_del(sh->func);
 		ft_dlst_del(&sh->lexer, 0);
+		sh_env_destroy(sh->env);
 		free(sh);
 	}
 }

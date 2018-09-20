@@ -9,6 +9,7 @@ typedef struct	s_cmd
 	int		saved_fd[3];
 	char	**argv;
 	char	*name;
+	int		bg;
 	int		argc;
 }				t_cmd;
 

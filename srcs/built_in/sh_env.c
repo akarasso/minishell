@@ -43,41 +43,52 @@ static void	modify_env(char ***argv, t_shell *new)
 
 static int	exec_built_in(char *line, t_shell *shell)
 {
-	if (shell && line) {
-		/* code */
-	}
-	/*sh_tokenize(shell);
+	int ret;
+
+	shell->cmd = line;
+	sh_tokenize(shell);
+	ret = CMD_ERROR;
 	if (sh_parser(shell))
 	{
 		sh_ast_construct(shell);
-		return (sh_exec(shell, shell->ast));
-	}*/
-	return (CMD_ERROR);
+		ret = sh_exec(shell, shell->ast);
+		sh_ast_del(&shell->ast);
+		shell->lexer->first = 0;
+		shell->lexer->last = 0;
+		shell->lexer->len = 0;
+	}
+	else
+		ft_dlst_clr(shell->lexer, sh_token_del);
+	ft_strdel(&line);
+	del_shell(shell);
+	return (ret);
 }
 
 int		sh_env(t_cmd *cmd)
 {
-	t_shell *new;
-	char		*line;
-	char		**argv;
+	t_shell	*new;
+	char	*line;
+	char	**argv;
 
-	// if (!(new = get_new_shell(cmd->shell->env->public)))
-	if (!(new = 0))
+	if (!(new = get_new_shell(cmd->shell->env->public)))
 		return (CMD_ERROR);
 	argv = &cmd->argv[1];
 	remove_env(&argv, new);
 	modify_env(&argv, new);
 	if (!*argv)
+	{
 		ft_strtab_print(new->env->public);
+		del_shell(new);
+	}
 	else
 	{
 		line = 0;
 		while (*argv)
 		{
-			line = ft_3strjoinfree(line, " ", *argv, LEFT | RIGHT);
+			line = ft_3strjoinfree(line, " ", *argv, LEFT);
 			argv++;
 		}
 		return (exec_built_in(line, new));
 	}
-	return (1);
+	return (CMD_SUCCESS);
 }

@@ -35,7 +35,8 @@ void	goto_end_word(char **str)
 			goto_next_quote(&ptr);
 		if (!ft_strncmp("$((", ptr, 3))
 			goto_end_arithmetic(&ptr);
-		ptr++;
+		if (*ptr)
+			ptr++;
 	}
 	*str = ptr;
 }
