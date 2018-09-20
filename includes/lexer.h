@@ -16,6 +16,7 @@ int			is_redirect(char *str);
 
 int			is_word(char *str);
 void		goto_end_word(char **str);
+void		goto_end_arithmetic(char **s);
 
 int			is_quote(char c);
 void		goto_next_quote(char **str);
@@ -33,5 +34,15 @@ int			is_pipe(void *data);
 void		sh_newtkn_op(int value, char **cmd, t_shell *sh);
 void		sh_newtkn_redirect(int value, char **cmd, t_shell *sh);
 void		sh_newtkn_word(char **cmd, t_shell *sh);
+
+/*
+** Parser
+*/
+
+int		sh_parser(t_shell *sh);
+int		parser_check_quote(t_shell *sh);
+int		parser_check_operator(t_shell *sh);
+int		parser_syntax(t_shell *sh);
+int		sh_heredoc(t_shell *sh);
 
 #endif

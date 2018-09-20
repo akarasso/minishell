@@ -35,26 +35,26 @@ static char	*get_home(t_shell *shell)
 	return (0);
 }
 
-void		*expansion_get_parameter_expansion(char **elem, t_cmd *cmd)
-{
-	char	*last;
-	char	*str;
-	char	*res;
-;
-	str = *elem;
-	if (!ft_strncmp(str, "${", 2) && *(last = ft_strlastchr(str)) == '}')
-	{
-		ft_strrmvchr(last);
-		ft_strrmvchr(str);
-		ft_strrmvchr(str);
-		if ((res = sh_expansion_var(str, cmd->shell->env)))
-		{
-			free(str);
-			*elem = res;
-		}
-	}
-	return (NULL);
-}
+// void		*expansion_get_parameter_expansion(char **elem, t_cmd *cmd)
+// {
+// 	char	*last;
+// 	char	*str;
+// 	char	*res;
+// ;
+// 	str = *elem;
+// 	if (!ft_strncmp(str, "${", 2) && *(last = ft_strlastchr(str)) == '}')
+// 	{
+// 		ft_strrmvchr(last);
+// 		ft_strrmvchr(str);
+// 		ft_strrmvchr(str);
+// 		if ((res = exp_var(str, cmd->shell->env)))
+// 		{
+// 			free(str);
+// 			*elem = res;
+// 		}
+// 	}
+// 	return (NULL);
+// }
 
 void		*expansion_get_expansion_aritmetique(char **elem, t_cmd *cmd)
 {
@@ -101,11 +101,30 @@ void		*expansion_get_pathname_expansion(char **elem, t_cmd *cmd)
 	return (NULL);
 }
 
-void		*expansion_unquote(char **elem, t_cmd *cmd)
+void		expansion_unquote(char **str)
 {
-	(void)elem;
-	(void)cmd;
-	return (NULL);
+	char	*endquote;
+	char	*s;
+
+	s = *str;
+	while (*s)
+	{
+		if (*s == '\\')
+			s++;
+		else if (is_quote(*s))
+		{
+			endquote = s;
+			goto_next_quote(&endquote);
+			if (*endquote == *s)
+			{
+				ft_strrmvchr(endquote);
+				ft_strrmvchr(s);
+			}
+			else
+				s++;
+		}
+		s++;
+	}
 }
 
 void		sh_expansion(t_cmd *cmd)
@@ -119,11 +138,11 @@ void		sh_expansion(t_cmd *cmd)
 	while (cmd->argv[i])
 	{
 		elem = &(cmd->argv[i]);
-		expansion_get_tild_expansion(elem, cmd, home);
-		expansion_get_parameter_expansion(elem, cmd);
-		sh_expansion_vars_string(elem, cmd);
-		expansion_get_expansion_aritmetique(elem, cmd);
-		expansion_unquote(elem, cmd);
+		exp_tilde(elem, cmd, home);
+		exp_vars(elem, cmd);
+		exp_arithmetic(elem);
+		// expansion_get_expansion_aritmetique(elem, cmd);
+		expansion_unquote(elem);
 		i++;
 	}
 	free(home);

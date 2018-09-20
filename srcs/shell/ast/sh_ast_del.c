@@ -2,8 +2,8 @@
 
 void	sh_ast_del(t_ast_node **ast)
 {
-	t_ast_node *left;
-	t_ast_node *right;
+	t_ast_node	*left;
+	t_ast_node	*right;
 
 	if (ast && *ast)
 	{

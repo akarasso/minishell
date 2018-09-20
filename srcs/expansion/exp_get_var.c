@@ -1,18 +1,18 @@
 #include "shell.h"
 
 t_varsexp_rules	g_varsexp_rules[12] ={
-	{":-", sh_exp_sub_param, sh_exp_sub_word, sh_exp_sub_word},
-	{"-", sh_exp_sub_param, sh_exp_sub_null, sh_exp_sub_word},
-	{":=", sh_exp_sub_param, sh_exp_assign, sh_exp_assign},
-	{"=", sh_exp_sub_param, sh_exp_sub_null, sh_exp_assign},
-	{":?", sh_exp_sub_param, sh_exp_sub_error, sh_exp_sub_error},
-	{"?", sh_exp_sub_param, sh_exp_sub_null, sh_exp_sub_error},
-	{":+", sh_exp_sub_word, sh_exp_sub_null, sh_exp_sub_null},
-	{"+", sh_exp_sub_word, sh_exp_sub_word, sh_exp_sub_null},
-	{"%%", sh_exp_unhandle, sh_exp_unhandle, sh_exp_unhandle},
-	{"%", sh_exp_unhandle, sh_exp_unhandle, sh_exp_unhandle},
-	{"##", sh_exp_unhandle, sh_exp_unhandle, sh_exp_unhandle},
-	{"#", sh_exp_unhandle, sh_exp_unhandle, sh_exp_unhandle}
+	{":-", exp_sub_param, exp_sub_word, exp_sub_word},
+	{"-", exp_sub_param, exp_sub_null, exp_sub_word},
+	{":=", exp_sub_param, exp_assign, exp_assign},
+	{"=", exp_sub_param, exp_sub_null, exp_assign},
+	{":?", exp_sub_param, exp_sub_error, exp_sub_error},
+	{"?", exp_sub_param, exp_sub_null, exp_sub_error},
+	{":+", exp_sub_word, exp_sub_null, exp_sub_null},
+	{"+", exp_sub_word, exp_sub_word, exp_sub_null},
+	{"%%", exp_unhandle, exp_unhandle, exp_unhandle},
+	{"%", exp_unhandle, exp_unhandle, exp_unhandle},
+	{"##", exp_unhandle, exp_unhandle, exp_unhandle},
+	{"#", exp_unhandle, exp_unhandle, exp_unhandle}
 };
 
 static t_varsexp_rules	*get_rules(char *s)
@@ -67,10 +67,18 @@ static	char			*exp_res(t_varsexp *vexp)
 	return (vexp->res);
 }
 
-char					*sh_expansion_var(char *str, t_env *env)
+char					*exp_get_var(char *str, t_env *env)
 {
 	t_varsexp	vexp;
+	char		*last;
 
+	if (!str)
+		return (ft_strdup(""));
+	last = ft_strlastchr(str);
+	if (*last == '}')
+		ft_strrmvchr(last);
+	if (*str == '{')
+		ft_strrmvchr(str);
 	if (*str == '#') {
 		str++;
 		vexp.format = NBR_FORMAT;

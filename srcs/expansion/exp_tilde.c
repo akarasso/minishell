@@ -1,6 +1,6 @@
 #include "shell.h"
 
-int			expansion_get_tild_expansion(char **str, t_cmd *cmd, char *home)
+int			exp_tilde(char **str, t_cmd *cmd, char *home)
 {
 	char		*tmp;
 

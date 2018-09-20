@@ -30,7 +30,6 @@ void	math_destroy_tkn(t_dlst_elem *elem)
 	t_str_token *tkn;
 
 	tkn = elem->data;
-	printf("CALL\n");
 	if (tkn)
 	{
 		if (tkn->type == MATH_PARENTHESE)
