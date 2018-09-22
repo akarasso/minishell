@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   sh_echo.c                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: akarasso <akarasso@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2018/09/22 10:36:58 by akarasso          #+#    #+#             */
+/*   Updated: 2018/09/22 10:37:52 by akarasso         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "shell.h"
 
 static int	check_flag(char ***argv)
@@ -25,7 +37,7 @@ static int	check_flag(char ***argv)
 	return (flag);
 }
 
-int		sh_echo(t_cmd *cmd)
+int			sh_echo(t_cmd *cmd)
 {
 	int		flag;
 	char	**argv;

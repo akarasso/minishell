@@ -1,6 +1,18 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_btree_push.c                                    :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: akarasso <akarasso@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2018/09/22 09:56:29 by akarasso          #+#    #+#             */
+/*   Updated: 2018/09/22 10:06:36 by akarasso         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "libft.h"
 
-static void	btree_add(t_btree *ptr, int (*func_cmp)(void*,void*), t_btree *new)
+static void	btree_add(t_btree *ptr, int (*func_cmp)(void*, void*), t_btree *new)
 {
 	int ret;
 
@@ -21,7 +33,8 @@ static void	btree_add(t_btree *ptr, int (*func_cmp)(void*,void*), t_btree *new)
 	}
 }
 
-t_btree	*ft_btree_push(t_btree **tree, int (*func_cmp)(void*,void*), void *data)
+t_btree		*ft_btree_push(t_btree **tree,
+	int (*func_cmp)(void*, void*), void *data)
 {
 	t_btree *new;
 

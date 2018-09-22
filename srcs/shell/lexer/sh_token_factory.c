@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   sh_token_factory.c                                 :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: akarasso <akarasso@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2018/09/22 10:46:08 by akarasso          #+#    #+#             */
+/*   Updated: 2018/09/22 10:53:24 by akarasso         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "shell.h"
 
 void	sh_newtkn_word(char **cmd, t_shell *sh)
@@ -30,7 +42,7 @@ void	sh_newtkn_op(int value, char **cmd, t_shell *sh)
 void	sh_newtkn_redirect(int index, char **cmd, t_shell *sh)
 {
 	t_int_token	*new;
-	int	io_number;
+	int			io_number;
 
 	io_number = 0;
 	sh_redirect_strcmp(*cmd, g_shell_redirect[index], &io_number);

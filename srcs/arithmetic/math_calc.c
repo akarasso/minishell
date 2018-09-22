@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   math_calc.c                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: akarasso <akarasso@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2018/09/22 10:13:33 by akarasso          #+#    #+#             */
+/*   Updated: 2018/09/22 10:14:22 by akarasso         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "shell.h"
 
 int		math_node_operator(t_meval *meval, t_ast_node *node, t_chr_token *tkn)
@@ -25,7 +37,7 @@ int		math_node_operator(t_meval *meval, t_ast_node *node, t_chr_token *tkn)
 		return (0);
 }
 
-int			math_node_parenthese(t_meval *meval, t_str_token *tkn)
+int		math_node_parenthese(t_meval *meval, t_str_token *tkn)
 {
 	int ret;
 
@@ -40,7 +52,7 @@ int			math_node_parenthese(t_meval *meval, t_str_token *tkn)
 	}
 }
 
-int			math_calc(t_meval *meval, t_ast_node *node)
+int		math_calc(t_meval *meval, t_ast_node *node)
 {
 	t_chr_token *tkn;
 

@@ -1,6 +1,18 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   sh_ast_revsplit.c                                  :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: akarasso <akarasso@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2018/09/22 10:44:33 by akarasso          #+#    #+#             */
+/*   Updated: 2018/09/22 10:47:21 by akarasso         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "shell.h"
 
-int		sh_ast_revsplit(t_ast_node *ast, int(*func)(void*))
+int		sh_ast_revsplit(t_ast_node *ast, int (*func)(void*))
 {
 	t_dlst_elem	*split;
 	t_dlst_elem	*elem;

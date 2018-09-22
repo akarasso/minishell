@@ -1,6 +1,18 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   math_destroy.c                                     :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: akarasso <akarasso@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2018/09/22 10:13:36 by akarasso          #+#    #+#             */
+/*   Updated: 2018/09/22 10:14:45 by akarasso         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "shell.h"
 
-void 	math_destroy_ast(t_ast_node *node)
+void	math_destroy_ast(t_ast_node *node)
 {
 	t_str_token	*tkn;
 
@@ -38,7 +50,7 @@ void	math_destroy_tkn(t_dlst_elem *elem)
 	}
 }
 
-void 	math_destroy(t_meval *ptr)
+void	math_destroy(t_meval *ptr)
 {
 	if (ptr)
 	{

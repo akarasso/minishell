@@ -1,11 +1,37 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   sh_heredoc.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: akarasso <akarasso@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2018/09/22 10:46:31 by akarasso          #+#    #+#             */
+/*   Updated: 2018/09/22 11:02:26 by akarasso         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "shell.h"
 
+static int	get_heredoc_concat(char *value, char *line, char *key)
+{
+	int ret;
 
-/*
-** A note pour plus tard, que lors de la reprise d'une comande, 
-** value vaut le contenu des token apres la prochaine newline jusqu'a 
-** l'arrive du token heredoc de fin {Bugminor}
-*/
+	ret = 1;
+	if (ft_strcmp(line, key))
+	{
+		if (!value)
+			ft_strdup(line);
+		else
+			ft_3strjoinfree(value, "\n", line, LEFT);
+	}
+	else
+	{
+		value = ft_strjoinfree(value, "\n", LEFT);
+		ret = 0;
+	}
+	return (ret);
+}
+
 static int	get_heredoc_value(t_dlst_elem *elem)
 {
 	char	*key;
@@ -19,13 +45,8 @@ static int	get_heredoc_value(t_dlst_elem *elem)
 	{
 		ft_putstr("heredoc>");
 		get_next_line(0, &line);
-		if (ft_strcmp(line, key))
-			value = (!value) ? ft_strdup(line) : ft_3strjoinfree(value, "\n", line, LEFT);
-		else
-		{
-			value = ft_strjoinfree(value, "\n", LEFT);
-			break;
-		}
+		if (!get_heredoc_concat(value, line, key))
+			break ;
 		ft_strdel(&line);
 	}
 	ft_strdel(&key);
@@ -34,7 +55,7 @@ static int	get_heredoc_value(t_dlst_elem *elem)
 	return (1);
 }
 
-int		sh_heredoc(t_shell *sh)
+int			sh_heredoc(t_shell *sh)
 {
 	t_dlst_elem *elem;
 	t_int_token	*tkn;
@@ -45,7 +66,8 @@ int		sh_heredoc(t_shell *sh)
 		tkn = (t_int_token*)elem->data;
 		if (tkn->type == REDIRECT && tkn->value == DLESS)
 		{
-			if (!elem->next || ((t_str_token*)elem->next->data)->type != REDIRECT_PATH)
+			if (!elem->next
+				|| ((t_str_token*)elem->next->data)->type != REDIRECT_PATH)
 				return (0);
 			get_heredoc_value(elem->next);
 		}

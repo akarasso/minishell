@@ -3,16 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   ft_itoa.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hoax <hoax@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: akarasso <akarasso@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/03 17:49:42 by akarasso          #+#    #+#             */
-/*   Updated: 2018/08/27 06:32:25 by hoax             ###   ########.fr       */
+/*   Updated: 2018/09/22 09:54:45 by akarasso         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_integer.h"
-#include "ft_mem.h"
-#include "ft_str.h"
+#include "libft.h"
 
 static int	ft_int_len(long int n)
 {

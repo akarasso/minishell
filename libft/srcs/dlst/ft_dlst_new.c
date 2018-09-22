@@ -3,15 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   ft_dlst_new.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hoax <hoax@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: akarasso <akarasso@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/03 19:36:36 by akarasso          #+#    #+#             */
-/*   Updated: 2018/08/29 07:31:25 by hoax             ###   ########.fr       */
+/*   Updated: 2018/09/22 09:55:58 by akarasso         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_dlst.h"
-#include "ft_mem.h"
+#include "libft.h"
 
 t_dlst	*ft_dlst_new(void *content)
 {

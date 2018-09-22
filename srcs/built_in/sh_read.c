@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   sh_read.c                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: akarasso <akarasso@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2018/09/22 10:37:18 by akarasso          #+#    #+#             */
+/*   Updated: 2018/09/22 10:39:28 by akarasso         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "shell.h"
 
 static int	read_flag(int argc, char ***argv, int *flag)
@@ -58,7 +70,7 @@ static int	check_key(char **argv)
 
 int			sh_read(t_cmd *cmd)
 {
-	int 	flag;
+	int		flag;
 	char	**tabe;
 	char	**argv;
 
@@ -69,7 +81,8 @@ int			sh_read(t_cmd *cmd)
 	if (*argv)
 		read_assign(cmd, argv, tabe);
 	else
-		sh_env_set_protected(cmd->shell->env, "REPLY", ft_strtab_join(tabe, " "));
+		sh_env_set_protected(cmd->shell->env,
+			"REPLY", ft_strtab_join(tabe, " "));
 	ft_strtab_del(&tabe);
 	return (CMD_SUCCESS);
 }

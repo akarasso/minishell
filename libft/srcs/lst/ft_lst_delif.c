@@ -3,17 +3,18 @@
 /*                                                        :::      ::::::::   */
 /*   ft_lst_delif.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hoax <hoax@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: akarasso <akarasso@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/03 19:48:41 by akarasso          #+#    #+#             */
-/*   Updated: 2018/08/27 08:29:18 by hoax             ###   ########.fr       */
+/*   Updated: 2018/09/22 10:02:17 by akarasso         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_lst.h"
 #include "ft_mem.h"
 
-static void	ft_del_delif_exec(t_lst *container, t_lst_elem **tmp, t_lst_elem **ptr, void (*del)(void *))
+static void	ft_del_delif_exec(t_lst *container, t_lst_elem **tmp,
+	t_lst_elem **ptr, void (*del)(void *))
 {
 	t_lst_elem		*tmp2;
 
@@ -28,7 +29,8 @@ static void	ft_del_delif_exec(t_lst *container, t_lst_elem **tmp, t_lst_elem **p
 	container->len--;
 }
 
-void		ft_lst_delif(t_lst *container, int (*delif_func)(void *), void (*del)(void *))
+void		ft_lst_delif(t_lst *container,
+	int (*delif_func)(void *), void (*del)(void *))
 {
 	t_lst_elem		*ptr;
 	t_lst_elem		*tmp;

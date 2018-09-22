@@ -6,48 +6,13 @@
 /*   By: hoax <hoax@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/31 01:52:27 by hoax              #+#    #+#             */
-/*   Updated: 2018/09/05 14:13:26 by hoax             ###   ########.fr       */
+/*   Updated: 2018/09/22 11:42:23 by akarasso         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "shell.h"
 
-static void		tree_del(t_btree *tree)
-{
-	if (tree)
-	{
-		if (tree->data)
-		{
-			free(((t_func*)tree->data)->name);
-			free(tree->data);
-		}
-		if (tree->left)
-			tree_del(tree->left);
-		if (tree->right)
-			tree_del(tree->right);
-		free(tree);
-	}
-}
-
-static t_btree	*init_shell_built_in()
-{
-	t_btree	*tree;
-
-	tree = 0;
-	if (!ft_btree_push(&tree, built_in_cmp, built_in_new("echo", sh_echo))
-		|| !ft_btree_push(&tree, built_in_cmp, built_in_new("cd", sh_cd))
-		|| !ft_btree_push(&tree, built_in_cmp, built_in_new("env", sh_env))
-		|| !ft_btree_push(&tree, built_in_cmp, built_in_new("exit", sh_exit))
-		|| !ft_btree_push(&tree, built_in_cmp, built_in_new("export", sh_export))
-		|| !ft_btree_push(&tree, built_in_cmp, built_in_new("setenv", sh_setenv))
-		|| !ft_btree_push(&tree, built_in_cmp, built_in_new("unset", sh_unset))
-		|| !ft_btree_push(&tree, built_in_cmp, built_in_new("read", sh_read))
-		|| !ft_btree_push(&tree, built_in_cmp, built_in_new("unsetenv", sh_unsetenv)))
-		return (0);
-	return (tree);
-}
-
-t_shell		*get_new_shell(char **env)
+t_shell			*get_new_shell(char **env)
 {
 	t_shell *sh;
 
@@ -66,15 +31,15 @@ t_shell		*get_new_shell(char **env)
 	}
 	if (!(sh->env = sh_env_init(env)))
 	{
-		tree_del(sh->func);
 		ft_dlst_del(&sh->lexer, 0);
+		tree_del(sh->func);
 		free(sh);
 		return (0);
 	}
 	return (sh);
 }
 
-void	del_shell(t_shell *sh)
+void			del_shell(t_shell *sh)
 {
 	if (sh)
 	{
@@ -85,14 +50,20 @@ void	del_shell(t_shell *sh)
 	}
 }
 
-int			main(int argc, char **argv, char **env)
+int				main(int argc, char **argv, char **env)
 {
+	int		last_ret;
 	t_shell *sh;
 
 	(void)argc;
 	(void)argv;
 	if ((sh = get_new_shell(env)))
+	{
+		if (!env_get_first(sh->env, "PWD"))
+			sh_env_set(&sh->env->public, "PWD", getcwd(NULL, 0), RIGHT);
 		sh_input_loop(sh);
+	}
+	last_ret = sh->last_ret;
 	del_shell(sh);
-	return (0);
+	return (last_ret);
 }

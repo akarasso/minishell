@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   sh_setenv.c                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: akarasso <akarasso@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2018/09/22 10:37:21 by akarasso          #+#    #+#             */
+/*   Updated: 2018/09/22 10:40:49 by akarasso         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "shell.h"
 
 static int	setenv_error(t_cmd *cmd)
@@ -25,7 +37,7 @@ static int	setenv_error(t_cmd *cmd)
 	return (0);
 }
 
-int		sh_setenv(t_cmd *cmd)
+int			sh_setenv(t_cmd *cmd)
 {
 	if (setenv_error(cmd))
 		return (CMD_ERROR);

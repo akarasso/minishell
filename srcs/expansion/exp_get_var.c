@@ -1,6 +1,18 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   exp_get_var.c                                      :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: akarasso <akarasso@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2018/09/22 10:41:22 by akarasso          #+#    #+#             */
+/*   Updated: 2018/09/22 10:42:30 by akarasso         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "shell.h"
 
-t_varsexp_rules	g_varsexp_rules[12] ={
+t_varsexp_rules	g_varsexp_rules[12] = {
 	{":-", exp_sub_param, exp_sub_word, exp_sub_word},
 	{"-", exp_sub_param, exp_sub_null, exp_sub_word},
 	{":=", exp_sub_param, exp_assign, exp_assign},
@@ -23,7 +35,7 @@ static t_varsexp_rules	*get_rules(char *s)
 	while (i < 12)
 	{
 		if (ft_strstr(s, g_varsexp_rules[i].op))
-			return &g_varsexp_rules[i];
+			return (&g_varsexp_rules[i]);
 		i++;
 	}
 	return (0);

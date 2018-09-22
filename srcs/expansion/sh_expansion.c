@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   expansion_get_word.c                               :+:      :+:    :+:   */
+/*   sh_expansion.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gnebie <marvin@42.fr>                      +#+  +:+       +#+        */
+/*   By: gnebie <gnebie@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/09/05 16:49:03 by gnebie            #+#    #+#             */
-/*   Updated: 2018/09/05 16:49:04 by gnebie           ###   ########.fr       */
+/*   Updated: 2018/09/22 10:44:02 by akarasso         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,7 +61,8 @@ void		expansion_unquote(char **str)
 	}
 }
 
-void		expansion_backslash(char **s) {
+void		expansion_backslash(char **s)
+{
 	char	*ptr;
 
 	ptr = *s;

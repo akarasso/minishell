@@ -1,7 +1,16 @@
-#include "ft_dlst.h"
-#include "ft_mem.h"
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_dlst_new_elem.c                                 :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: akarasso <akarasso@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2018/09/22 09:55:53 by akarasso          #+#    #+#             */
+/*   Updated: 2018/09/22 11:06:46 by akarasso         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
-#include <stdio.h>
+#include "libft.h"
 
 t_dlst_elem	*ft_dlst_new_elem(void *data)
 {

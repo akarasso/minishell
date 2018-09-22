@@ -1,7 +1,17 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_3strjoinfree.c                                  :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: akarasso <akarasso@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2018/09/22 09:51:09 by akarasso          #+#    #+#             */
+/*   Updated: 2018/09/22 10:01:40 by akarasso         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "ft_str.h"
 #include "ft_mem.h"
-
-#include <stdio.h>
 
 static void	ft_3strjoinfreefunc(char *s1, char *s2, char *s3, char flag)
 {
@@ -13,7 +23,7 @@ static void	ft_3strjoinfreefunc(char *s1, char *s2, char *s3, char flag)
 		free(s3);
 }
 
-char	*ft_3strjoinfree(char *s1, char *s2, char *s3, char flag)
+char		*ft_3strjoinfree(char *s1, char *s2, char *s3, char flag)
 {
 	char	*new;
 	int		len;

@@ -1,12 +1,24 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   math_token.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: akarasso <akarasso@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2018/09/22 10:13:49 by akarasso          #+#    #+#             */
+/*   Updated: 2018/09/22 10:36:30 by akarasso         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "shell.h"
 
-int		math_push_number(t_dlst	*lexer, char **str)
+int			math_push_number(t_dlst *lexer, char **str)
 {
 	t_int_token *tkn;
 
 	if (!(tkn = ft_new_int_token(MATH_NUMBER, str)))
 		return (0);
-	if (!(ft_dlst_pushback(lexer, tkn)))
+	if (!ft_dlst_pushback(lexer, tkn))
 	{
 		free(tkn);
 		return (0);
@@ -14,7 +26,7 @@ int		math_push_number(t_dlst	*lexer, char **str)
 	return (1);
 }
 
-static	void goto_end_parentheses(char **str)
+static void	goto_end_parentheses(char **str)
 {
 	int stack;
 
@@ -31,7 +43,7 @@ static	void goto_end_parentheses(char **str)
 	}
 }
 
-int		math_push_parenthese(t_dlst	*lexer, char **str)
+int			math_push_parenthese(t_dlst *lexer, char **str)
 {
 	t_str_token *tkn;
 
@@ -52,7 +64,7 @@ int		math_push_parenthese(t_dlst	*lexer, char **str)
 	return (1);
 }
 
-int		math_push_preparenthese(t_dlst	*lexer, char **str)
+int			math_push_preparenthese(t_dlst *lexer, char **str)
 {
 	char		*old;
 	t_int_token *itkn;
@@ -79,8 +91,7 @@ int		math_push_preparenthese(t_dlst	*lexer, char **str)
 	return (1);
 }
 
-
-int		math_push_op(t_dlst	*lexer, char **str)
+int			math_push_op(t_dlst *lexer, char **str)
 {
 	t_chr_token *tkn;
 

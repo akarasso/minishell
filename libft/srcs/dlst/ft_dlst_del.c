@@ -3,15 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   ft_dlst_del.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hoax <hoax@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: akarasso <akarasso@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/03 20:03:37 by akarasso          #+#    #+#             */
-/*   Updated: 2018/09/05 15:37:12 by hoax             ###   ########.fr       */
+/*   Updated: 2018/09/22 09:55:13 by akarasso         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_dlst.h"
-#include "ft_mem.h"
+#include "libft.h"
 
 void	ft_dlst_del(t_dlst **container, void (*del_elem_func)(t_dlst_elem *))
 {

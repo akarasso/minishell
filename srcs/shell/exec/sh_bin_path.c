@@ -1,6 +1,18 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   sh_bin_path.c                                      :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: akarasso <akarasso@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2018/09/22 10:45:01 by akarasso          #+#    #+#             */
+/*   Updated: 2018/09/22 11:53:24 by akarasso         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "shell.h"
 
-int		is_valid(char *fullpath)
+int			is_valid(char *fullpath)
 {
 	int			rstat;
 	int			raccess;
@@ -19,7 +31,7 @@ int		is_valid(char *fullpath)
 	return (NOTEXIST);
 }
 
-char	**get_pathtab(t_shell *sh)
+char		**get_pathtab(t_shell *sh)
 {
 	char	**tab;
 	char	*path_value;
@@ -32,11 +44,12 @@ char	**get_pathtab(t_shell *sh)
 	return (tab);
 }
 
-char	*search_with_pathtab(char **pathtab, char *file, int *ret)
+char		*search_with_pathtab(char **pathtab, char *file, int *ret)
 {
 	char	*fullpath;
 
 	fullpath = 0;
+	*ret = CMD_ERROR;
 	while (*pathtab)
 	{
 		fullpath = ft_3strjoinfree(*pathtab, "/", file, 0);
@@ -69,18 +82,22 @@ static void	path_error(int *ret, char *file)
 	}
 }
 
-char	*sh_bin_path(t_shell *sh, char *file, int *ret)
+char		*sh_bin_path(t_shell *sh, char *file, int *ret)
 {
 	char	**tab;
 	char	*fullpath;
 
 	fullpath = 0;
+	*ret = CMD_ERROR;
 	if ((tab = get_pathtab(sh)))
 		fullpath = search_with_pathtab(tab, file, ret);
 	if (*ret != CMD_SUCCESS)
 	{
-		if ((!ft_strncmp(file, "./", 2) || *file == '/') && (*ret = is_valid(file)) == CMD_SUCCESS)
+		if ((!ft_strncmp(file, "./", 2) || *file == '/')
+			&& (*ret = is_valid(file)) == CMD_SUCCESS)
 			fullpath = ((*file == '/') ? ft_strdup(file) : ft_strdup(file + 2));
+		else
+			*ret = NOTEXIST;
 	}
 	if (*ret != CMD_SUCCESS)
 		path_error(ret, file);

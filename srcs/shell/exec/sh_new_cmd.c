@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   sh_new_cmd.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: akarasso <akarasso@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2018/09/22 10:45:26 by akarasso          #+#    #+#             */
+/*   Updated: 2018/09/22 10:51:19 by akarasso         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "shell.h"
 
 static void	fill_cmd_argv(void *data, void *acc)
@@ -9,7 +21,7 @@ static void	fill_cmd_argv(void *data, void *acc)
 	tkn = (t_str_token*)data;
 	if (tkn->type == WORD && *tab
 		&& !(ft_strtab_add(tab, ft_strdup(tkn->value))))
-			ft_strtab_del(tab);
+		ft_strtab_del(tab);
 }
 
 t_cmd		*sh_new_cmd(t_shell *sh, t_dlst_elem *token_lst)

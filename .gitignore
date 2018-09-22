@@ -3,5 +3,4 @@
 .D*
 *.dSYM
 a.out
-shell
 */*.gch

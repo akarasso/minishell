@@ -1,7 +1,16 @@
-#include "ft_read.h"
-#include "ft_str.h"
-#include "ft_strtab.h"
-#include "ft_mem.h"
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_readdir.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: akarasso <akarasso@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2018/09/22 09:53:12 by akarasso          #+#    #+#             */
+/*   Updated: 2018/09/22 09:59:44 by akarasso         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include "libft.h"
 
 static char	*get_formated_path(char *path, char *name)
 {
@@ -15,7 +24,7 @@ static char	*get_formated_path(char *path, char *name)
 	return (ptr);
 }
 
-int		ft_readdir(char *path, char ***res, int depth)
+int			ft_readdir(char *path, char ***res, int depth)
 {
 	struct dirent	*info;
 	DIR				*dir;

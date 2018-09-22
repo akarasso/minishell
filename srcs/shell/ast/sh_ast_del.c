@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   sh_ast_del.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: akarasso <akarasso@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2018/09/22 10:44:30 by akarasso          #+#    #+#             */
+/*   Updated: 2018/09/22 10:44:30 by akarasso         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "shell.h"
 
 void	sh_ast_del_elem(t_dlst_elem *elem)
@@ -9,10 +21,10 @@ void	sh_ast_del_elem(t_dlst_elem *elem)
 	{
 		tmp = elem->next;
 		tkn = elem->data;
-		if (tkn->type == WORD || tkn->type == REDIRECT_PATH)
-			ft_del_str_token(&tkn);
-		else
+		if (tkn->type & (OP | IO_NUMBER | REDIRECT))
 			ft_del_chr_token((t_chr_token**)&tkn);
+		else
+			ft_del_str_token(&tkn);
 		free(elem);
 		elem = tmp;
 	}

@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   exp_arithmetic.c                                   :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: akarasso <akarasso@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2018/09/22 10:41:12 by akarasso          #+#    #+#             */
+/*   Updated: 2018/09/22 10:41:57 by akarasso         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "shell.h"
 
 static char		*exp_arithmetic_pos(char *str)
@@ -53,7 +65,8 @@ int				exp_arithmetic_exec(char *pos, char *expr, int *i, char **str)
 		if (!math_eval(expr, &res) && (strres = ft_itoa(res)))
 		{
 			ret = ft_strlen(strres) - 1;
-			*str = ft_3strjoinfree(*str, strres, &(*str)[*i + ft_strlen(expr) + 4], LEFT | MID);
+			*str = ft_3strjoinfree(*str,
+				strres, &(*str)[*i + ft_strlen(expr) + 4], LEFT | MID);
 		}
 		ft_strdel(&expr);
 	}

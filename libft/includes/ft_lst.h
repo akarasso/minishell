@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_lst.h                                           :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: akarasso <akarasso@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2018/09/22 10:07:52 by akarasso          #+#    #+#             */
+/*   Updated: 2018/09/22 10:09:39 by akarasso         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #ifndef FT_LST_H
 # define FT_LST_H
 
@@ -17,14 +29,17 @@ typedef struct	s_lst
 }				t_lst;
 
 void			ft_lst_del(t_lst **container, void (*del_elem_func)(void *));
-void			ft_lst_delif(t_lst *container, int (*delif_func)(void *), void (*del)(void *));
+void			ft_lst_delif(t_lst *container,
+					int (*delif_func)(void *), void (*del)(void *));
 int				ft_lst_push(t_lst *container, void *data);
 int				ft_lst_pushback(t_lst *container, void *data);
-void			ft_lst_iter_data(t_lst *container, void (*exec_func)(void *data));
+void			ft_lst_iter_data(t_lst *container,
+					void (*exec_func)(void *data));
 unsigned int	ft_lst_len(t_lst *container);
 t_lst			*ft_lst_new(void *content);
 t_lst_elem		*ft_lst_new_elem(void *data);
 t_lst_elem		*ft_lst_getlast(t_lst_elem *lst);
-void			ft_lst_iter(t_lst *container, void (*exec_func)(t_lst_elem *elem));
+void			ft_lst_iter(t_lst *container,
+					void (*exec_func)(t_lst_elem *elem));
 
 #endif

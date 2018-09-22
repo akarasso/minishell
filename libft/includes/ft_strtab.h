@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_strtab.h                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: akarasso <akarasso@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2018/09/22 10:07:21 by akarasso          #+#    #+#             */
+/*   Updated: 2018/09/22 10:09:16 by akarasso         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #ifndef FT_STRTAB_H
 # define FT_STRTAB_H
 
@@ -17,7 +29,7 @@ int		ft_strtab_strncmp_i(char **tab, char *value);
 char	**ft_strtab_dup(char **src);
 void	ft_strtab_cat(char **dest, char **src);
 char	**ft_strtab_3join(char **tab1, char **tab2, char **tab3, char flag);
-void 	ft_strtab_iter(char **tab, void (*func)(char *, void *), void *data);
+void	ft_strtab_iter(char **tab, void (*func)(char *, void *), void *data);
 char	*ft_strtab_join(char **tab, char *key);
 
 #endif

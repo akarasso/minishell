@@ -3,16 +3,17 @@
 /*                                                        :::      ::::::::   */
 /*   ft_dlst_reduce_data.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hoax <hoax@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: akarasso <akarasso@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/03 20:09:53 by akarasso          #+#    #+#             */
-/*   Updated: 2018/09/02 07:11:40 by hoax             ###   ########.fr       */
+/*   Updated: 2018/09/22 10:02:48 by akarasso         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_dlst.h"
+#include "libft.h"
 
-void	ft_dlst_reduce_data(t_dlst *container, void (*exec_func)(void *, void*), void *arg)
+void	ft_dlst_reduce_data(t_dlst *container,
+	void (*exec_func)(void *, void*), void *arg)
 {
 	t_dlst_elem *ptr;
 
@@ -26,7 +27,8 @@ void	ft_dlst_reduce_data(t_dlst *container, void (*exec_func)(void *, void*), vo
 	}
 }
 
-void	ft_dlstelem_reduce_data(t_dlst_elem *elem, void (*exec_func)(void *, void*), void *arg)
+void	ft_dlstelem_reduce_data(t_dlst_elem *elem,
+	void (*exec_func)(void *, void*), void *arg)
 {
 	if (!elem)
 		return ;

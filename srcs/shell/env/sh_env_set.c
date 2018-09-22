@@ -1,6 +1,18 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   sh_env_set.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: akarasso <akarasso@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2018/09/22 10:44:53 by akarasso          #+#    #+#             */
+/*   Updated: 2018/09/22 10:48:23 by akarasso         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "shell.h"
 
-int		sh_env_set(char	***tabe, char *key, char *value, char flag)
+int		sh_env_set(char ***tabe, char *key, char *value, char flag)
 {
 	char	**env;
 	char	*new;

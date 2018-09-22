@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   sh_export.c                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: akarasso <akarasso@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2018/09/22 10:37:11 by akarasso          #+#    #+#             */
+/*   Updated: 2018/09/22 10:38:48 by akarasso         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "shell.h"
 
 static int	export_vars(t_cmd *cmd, char *argv)
@@ -23,7 +35,7 @@ static int	export_vars(t_cmd *cmd, char *argv)
 	return (0);
 }
 
-int		sh_export(t_cmd *cmd)
+int			sh_export(t_cmd *cmd)
 {
 	char	**argv;
 	int		ret;

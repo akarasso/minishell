@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   ft_dlst_push.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hoax <hoax@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: akarasso <akarasso@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/03 20:05:51 by akarasso          #+#    #+#             */
-/*   Updated: 2018/08/30 05:43:32 by hoax             ###   ########.fr       */
+/*   Updated: 2018/09/22 09:56:02 by akarasso         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_dlst.h"
+#include "libft.h"
 
 t_dlst_elem		*ft_dlst_push(t_dlst *container, void *data)
 {

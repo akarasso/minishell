@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_lexer.h                                         :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: akarasso <akarasso@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2018/09/22 10:07:55 by akarasso          #+#    #+#             */
+/*   Updated: 2018/09/22 10:12:13 by akarasso         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #ifndef FT_LEXER_H
 # define FT_LEXER_H
 
@@ -20,7 +32,6 @@ typedef struct	s_str_token
 	int		type;
 	char	*value;
 }				t_str_token;
-
 
 t_str_token		*ft_new_str_token(int type, char **str, void (*go_to)(char**));
 t_chr_token		*ft_new_chr_token(int type, char **str);

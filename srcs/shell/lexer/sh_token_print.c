@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   sh_token_print.c                                   :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: akarasso <akarasso@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2018/09/22 10:46:11 by akarasso          #+#    #+#             */
+/*   Updated: 2018/09/22 10:55:13 by akarasso         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "shell.h"
 
 static void	print_key(int type)
@@ -12,9 +24,11 @@ static void	print_key(int type)
 		ft_putstr("REDIRECT\t");
 	else if (type == REDIRECT_PATH)
 		ft_putstr("TO\t\t");
+	else
+		ft_putstr("\t\t");
 }
 
-void	sh_token_print(void	*data)
+void		sh_token_print(void *data)
 {
 	t_str_token	*tkn;
 
@@ -40,7 +54,7 @@ void	sh_token_print(void	*data)
 	}
 }
 
-void	sh_lexer_print(t_shell *sh)
+void		sh_lexer_print(t_shell *sh)
 {
 	ft_putendl(BBLUE"__________DEBUG LEXER__________"RESET);
 	ft_putstr("Nombre de token: "RED);

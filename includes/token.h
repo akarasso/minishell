@@ -1,15 +1,23 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   token.h                                            :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: akarasso <akarasso@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2018/09/22 11:12:11 by akarasso          #+#    #+#             */
+/*   Updated: 2018/09/22 11:28:30 by akarasso         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #ifndef TOKEN_H
 # define TOKEN_H
-
-// Type token
 
 # define OP 0x01
 # define WORD 0x02
 # define REDIRECT 0x04
 # define IO_NUMBER 0x08
 # define REDIRECT_PATH 0x10
-
-// Globbing
 
 # define OP_PAT_LST 0x20
 # define PAT_LST 0x40
@@ -19,20 +27,12 @@
 # define CST 0x400
 # define SUB_DIR 0x800
 
-// char	*g_shell_op[7] = {";", "&", "|", "||", "&&", ";;", 0};
-
 # define SEMI 0
 # define AND 1
 # define PIPE 2
 # define OR 3
 # define DAND 4
 # define DSEMI 5
-
-
-// char	*g_shell_redirect[10] = {
-// 	"<", ">", "<<", ">>", "<&",
-// 	">&", "<>", "<<-", ">|", 0
-// };
 
 # define LESS 0
 # define GREAT 1
@@ -62,16 +62,5 @@ typedef struct	s_strtab_token
 	char	*value;
 	char	**tab;
 }				t_strtab_token;
-
-/*
-** Shell Lexer Token definition
-*/
-
-typedef struct	s_shell_token
-{
-	int		type;
-	char	*value;
-	int		index;
-}				s_shell_token;
 
 #endif

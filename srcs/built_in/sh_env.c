@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   sh_env.c                                           :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: akarasso <akarasso@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2018/09/22 10:37:03 by akarasso          #+#    #+#             */
+/*   Updated: 2018/09/22 10:38:02 by akarasso         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "shell.h"
 
 static void	remove_env(char ***argv, t_shell *new)
@@ -64,7 +76,7 @@ static int	exec_built_in(char *line, t_shell *shell)
 	return (ret);
 }
 
-int		sh_env(t_cmd *cmd)
+int			sh_env(t_cmd *cmd)
 {
 	t_shell	*new;
 	char	*line;

@@ -1,6 +1,18 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   sh_input.c                                         :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: akarasso <akarasso@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2018/09/22 10:45:36 by akarasso          #+#    #+#             */
+/*   Updated: 2018/09/22 11:07:54 by akarasso         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "shell.h"
 
-static void prompt(t_shell *sh)
+static void	prompt(t_shell *sh)
 {
 	char *cwd;
 	char *home;
@@ -20,7 +32,9 @@ static void prompt(t_shell *sh)
 			ft_putstr(RESET);
 		}
 	}
-	ft_putstr("$>");
+	else
+		ft_putstr("?????");
+	ft_putstr(" $>");
 }
 
 void		sh_input_loop(t_shell *sh)

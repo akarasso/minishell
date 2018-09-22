@@ -1,10 +1,10 @@
-CC	= gcc -g
+CC	= gcc
 
 CFLAGS	= -Wall -Werror -Wextra
 
 NAME	= libft.a
 
-HEADERS	= ./includes
+HEADERS	= ./includes 
 
 SOURCES	= ./srcs/ast/ft_ast_new.c			./srcs/ast/ft_ast_rsplit.c		./srcs/ast/ft_ast_split.c			\
 	./srcs/btree/ft_btree_find.c		./srcs/btree/ft_btree_new.c		./srcs/btree/ft_btree_push.c			\
@@ -27,26 +27,26 @@ SOURCES	= ./srcs/ast/ft_ast_new.c			./srcs/ast/ft_ast_rsplit.c		./srcs/ast/ft_as
 	./srcs/lst/ft_lst_pushback.c		./srcs/mem/ft_bzero.c			./srcs/mem/ft_memalloc.c			\
 	./srcs/mem/ft_memccpy.c			./srcs/mem/ft_memchr.c			./srcs/mem/ft_memcmp.c				\
 	./srcs/mem/ft_memcpy.c			./srcs/mem/ft_memdel.c			./srcs/mem/ft_memmove.c				\
-	./srcs/mem/ft_memset.c			./srcs/read/ft_open_dir.c		./srcs/read/ft_readdir.c			\
-	./srcs/read/get_next_line.c		./srcs/str/ft_3strjoinfree.c		./srcs/str/ft_str_isvalid.c			\
-	./srcs/str/ft_str_onlychr.c		./srcs/str/ft_stralpha.c		./srcs/str/ft_strcat.c				\
-	./srcs/str/ft_strchr.c			./srcs/str/ft_strclr.c			./srcs/str/ft_strcmp.c				\
-	./srcs/str/ft_strcmp_end.c		./srcs/str/ft_strcpy.c			./srcs/str/ft_strdel.c				\
-	./srcs/str/ft_strdigit.c		./srcs/str/ft_strdup.c			./srcs/str/ft_strequ.c				\
-	./srcs/str/ft_striter.c			./srcs/str/ft_striteri.c		./srcs/str/ft_strjoin.c				\
-	./srcs/str/ft_strjoinfree.c		./srcs/str/ft_strlastchr.c		./srcs/str/ft_strlcat.c				\
-	./srcs/str/ft_strlen.c			./srcs/str/ft_strmap.c			./srcs/str/ft_strmapi.c				\
-	./srcs/str/ft_strncat.c			./srcs/str/ft_strnchr.c			./srcs/str/ft_strncmp.c				\
-	./srcs/str/ft_strncpy.c			./srcs/str/ft_strndup.c			./srcs/str/ft_strnequ.c				\
-	./srcs/str/ft_strnew.c			./srcs/str/ft_strnjoinfree.c		./srcs/str/ft_strnstr.c				\
-	./srcs/str/ft_strrchr.c			./srcs/str/ft_strrev.c			./srcs/str/ft_strrmvchr.c			\
-	./srcs/str/ft_strsplit.c		./srcs/str/ft_strstr.c			./srcs/str/ft_strsub.c				\
-	./srcs/str/ft_strtrim.c			./srcs/strtab/ft_strtab_3join.c		./srcs/strtab/ft_strtab_add.c			\
-	./srcs/strtab/ft_strtab_cat.c		./srcs/strtab/ft_strtab_cpy.c		./srcs/strtab/ft_strtab_del.c			\
-	./srcs/strtab/ft_strtab_del_one.c	./srcs/strtab/ft_strtab_dup.c		./srcs/strtab/ft_strtab_find_index.c		\
-	./srcs/strtab/ft_strtab_free.c		./srcs/strtab/ft_strtab_iter.c		./srcs/strtab/ft_strtab_join.c			\
-	./srcs/strtab/ft_strtab_len.c		./srcs/strtab/ft_strtab_new.c		./srcs/strtab/ft_strtab_print.c			\
-	./srcs/strtab/ft_strtab_realloc.c	./srcs/strtab/ft_strtab_strncmp_i.c
+	./srcs/mem/ft_memset.c			./srcs/read/ft_readdir.c		./srcs/read/get_next_line.c			\
+	./srcs/str/ft_3strjoinfree.c		./srcs/str/ft_str_isvalid.c		./srcs/str/ft_str_onlychr.c			\
+	./srcs/str/ft_stralpha.c		./srcs/str/ft_strcat.c			./srcs/str/ft_strchr.c				\
+	./srcs/str/ft_strclr.c			./srcs/str/ft_strcmp.c			./srcs/str/ft_strcmp_end.c			\
+	./srcs/str/ft_strcpy.c			./srcs/str/ft_strdel.c			./srcs/str/ft_strdigit.c			\
+	./srcs/str/ft_strdup.c			./srcs/str/ft_strequ.c			./srcs/str/ft_striter.c				\
+	./srcs/str/ft_striteri.c		./srcs/str/ft_strjoin.c			./srcs/str/ft_strjoinfree.c			\
+	./srcs/str/ft_strlastchr.c		./srcs/str/ft_strlcat.c			./srcs/str/ft_strlen.c				\
+	./srcs/str/ft_strmap.c			./srcs/str/ft_strmapi.c			./srcs/str/ft_strncat.c				\
+	./srcs/str/ft_strnchr.c			./srcs/str/ft_strncmp.c			./srcs/str/ft_strncpy.c				\
+	./srcs/str/ft_strndup.c			./srcs/str/ft_strnequ.c			./srcs/str/ft_strnew.c				\
+	./srcs/str/ft_strnjoinfree.c		./srcs/str/ft_strnstr.c			./srcs/str/ft_strrchr.c				\
+	./srcs/str/ft_strrev.c			./srcs/str/ft_strrmvchr.c		./srcs/str/ft_strsplit.c			\
+	./srcs/str/ft_strstr.c			./srcs/str/ft_strsub.c			./srcs/str/ft_strtrim.c				\
+	./srcs/strtab/ft_strtab_3join.c		./srcs/strtab/ft_strtab_add.c		./srcs/strtab/ft_strtab_cat.c			\
+	./srcs/strtab/ft_strtab_cpy.c		./srcs/strtab/ft_strtab_del.c		./srcs/strtab/ft_strtab_del_one.c		\
+	./srcs/strtab/ft_strtab_dup.c		./srcs/strtab/ft_strtab_find_index.c	./srcs/strtab/ft_strtab_free.c			\
+	./srcs/strtab/ft_strtab_iter.c		./srcs/strtab/ft_strtab_join.c		./srcs/strtab/ft_strtab_len.c			\
+	./srcs/strtab/ft_strtab_new.c		./srcs/strtab/ft_strtab_print.c		./srcs/strtab/ft_strtab_realloc.c		\
+	./srcs/strtab/ft_strtab_strncmp_i.c	
 
 OBJ	= $(SOURCES:.c=.o)
 
@@ -66,10 +66,11 @@ exec	: $(OBJ)
 so	: $(OBJ)
 	$(CC) -fPIC $(CFLAGS) $(SOURCES) -shared -I$(HEADERS)
 
-clean	:
+clean	: 
 	rm -f $(OBJ)
 
 re	: fclean all
 
 fclean	: clean
 	rm -f $(NAME)
+

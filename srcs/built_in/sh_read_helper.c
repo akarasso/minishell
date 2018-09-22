@@ -1,12 +1,23 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   sh_read_helper.c                                   :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: akarasso <akarasso@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2018/09/22 10:37:15 by akarasso          #+#    #+#             */
+/*   Updated: 2018/09/22 10:40:36 by akarasso         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "shell.h"
 
-static void read_clear_str(char *str)
+static void	read_clear_str(char *str)
 {
 	while (*str)
 	{
-		if (!ft_isprint(*str) || *str == '\t') {
+		if (!ft_isprint(*str) || *str == '\t')
 			*str = ' ';
-		}
 		str++;
 	}
 }
@@ -32,7 +43,7 @@ static int	is_end_read(char *str)
 	return (escape) ? 0 : 1;
 }
 
-static void read_rm_escape(char *s)
+static void	read_rm_escape(char *s)
 {
 	while (*s)
 	{
@@ -47,7 +58,7 @@ static void read_rm_escape(char *s)
 	}
 }
 
-static void		read_opt_no_opt(char **res)
+static void	read_opt_no_opt(char **res)
 {
 	char *line;
 	char stop;
@@ -68,7 +79,7 @@ static void		read_opt_no_opt(char **res)
 	read_rm_escape(*res);
 }
 
-char			**sh_read_get_split_val(int flag)
+char		**sh_read_get_split_val(int flag)
 {
 	char **tabe;
 	char *res;

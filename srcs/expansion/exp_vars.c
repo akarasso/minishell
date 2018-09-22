@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   exp_vars.c                                         :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: akarasso <akarasso@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2018/09/22 10:41:32 by akarasso          #+#    #+#             */
+/*   Updated: 2018/09/22 10:43:44 by akarasso         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "shell.h"
 
 static char		*exp_vars_pos(char *str)
@@ -9,7 +21,7 @@ static char		*exp_vars_pos(char *str)
 		else if (*str == '\'')
 			goto_next_quote(&str);
 		else if (*str == '$' && (ft_isalpha(*(str + 1))
-			||  *(str + 1) == '?' || *(str + 1) == '{'))
+			|| *(str + 1) == '?' || *(str + 1) == '{'))
 			return (str);
 		if (*str)
 			str++;
@@ -30,7 +42,7 @@ static void		goto_end_parent(char **s)
 			stack--;
 		(*s)++;
 		if (!stack)
-			break;
+			break ;
 	}
 }
 
@@ -52,7 +64,6 @@ static char		*exp_get_key(char *s)
 	return (ft_strsub(s, 0, end - s));
 }
 
-// echo "$PATH"
 int				exp_vars_exec(char *pos, int *i, char **str, t_cmd *cmd)
 {
 	int		ret;
