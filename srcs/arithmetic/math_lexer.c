@@ -6,7 +6,7 @@
 /*   By: akarasso <akarasso@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/09/22 10:13:43 by akarasso          #+#    #+#             */
-/*   Updated: 2018/09/22 10:20:09 by akarasso         ###   ########.fr       */
+/*   Updated: 2018/09/22 12:18:16 by akarasso         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,9 @@ int		math_push_token(t_dlst *lexer, char **str, char *tmp)
 		return (math_push_preparenthese(lexer, str));
 	else if (**str > 32)
 	{
-		printf("math_eval:: error near '%.5s'\n", *str);
+		ft_putstr("math_eval:: error near '");
+		write(2, str, 1);
+		ft_putendl("'");
 		return (0);
 	}
 	return (-1);
@@ -44,13 +46,13 @@ int		math_parser_error(t_dlst_elem *lst, t_chr_token *tkn)
 	{
 		if (!lst->next || !lst->prev)
 		{
-			printf("math_eval:: error near '%c'\n", tkn->value);
+			ft_putendl("math_eval:: Parse error");
 			return (0);
 		}
 		if (((t_int_token*)lst->next->data)->type == MATH_OPERATOR
 			|| ((t_int_token*)lst->prev->data)->type == MATH_OPERATOR)
 		{
-			printf("math_eval:: error near '%c'\n", tkn->value);
+			ft_putendl("math_eval:: Parse error");
 			return (0);
 		}
 	}
@@ -58,8 +60,7 @@ int		math_parser_error(t_dlst_elem *lst, t_chr_token *tkn)
 	{
 		if (lst->next && ((t_int_token*)lst->next->data)->type == MATH_NUMBER)
 		{
-			printf("math_eval:: error near '%d'\n",
-				((t_int_token*)lst->next->data)->value);
+			ft_putendl("math_eval:: Parse error");
 			return (0);
 		}
 	}

@@ -6,7 +6,7 @@
 /*   By: akarasso <akarasso@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/09/22 11:12:07 by akarasso          #+#    #+#             */
-/*   Updated: 2018/09/22 11:28:35 by akarasso         ###   ########.fr       */
+/*   Updated: 2018/09/22 12:18:43 by akarasso         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,6 @@
 # include <signal.h>
 # include <sys/stat.h>
 # include <fcntl.h>
-# include <errno.h>
 # include <sys/types.h>
 # include <pwd.h>
 # include "libft.h"

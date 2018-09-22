@@ -6,7 +6,7 @@
 /*   By: akarasso <akarasso@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/09/22 10:45:11 by akarasso          #+#    #+#             */
-/*   Updated: 2018/09/22 11:35:04 by akarasso         ###   ########.fr       */
+/*   Updated: 2018/09/22 12:09:46 by akarasso         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ static int	sh_exec_fork(t_shell *sh, t_cmd *cmd)
 		{
 			fullpath = sh_bin_path(sh, cmd->argv[0], &ret);
 			if (fullpath)
-				execve(fullpath, cmd->argv, 0);
+				execve(fullpath, cmd->argv, sh->env->public);
 			ft_strdel(&fullpath);
 		}
 		sh->last_ret = 1;

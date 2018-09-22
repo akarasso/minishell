@@ -6,7 +6,7 @@
 /*   By: akarasso <akarasso@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/09/22 10:45:15 by akarasso          #+#    #+#             */
-/*   Updated: 2018/09/22 10:51:36 by akarasso         ###   ########.fr       */
+/*   Updated: 2018/09/22 12:17:29 by akarasso         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ int			sh_exec_pipedcmd(t_shell *sh, t_ast_node *ast)
 
 	ret = 0;
 	if ((pid = fork()) == -1)
-		printf("Error fork\n");
+		ft_putendl("Error fork\n");
 	else if (!pid)
 		exec_piped_rec(sh, ast);
 	else if (pid > 0)
