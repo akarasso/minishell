@@ -3,4 +3,5 @@
 .D*
 *.dSYM
 a.out
+minishell
 */*.gch
