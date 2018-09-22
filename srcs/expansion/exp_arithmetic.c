@@ -21,14 +21,23 @@ static char		*exp_arithmetic_pos(char *str)
 
 static char		*exp_get_expr(char *s)
 {
-	char *end;
+	char	*end;
+	char	*ret;
 
 	end = s;
 	goto_end_arithmetic(&end);
-	if (*end)
-		return (ft_strsub(s, 2, end - s - 3));
-	else
-		return (ft_strsub(s, 2, end - s));
+	if ((ret = ft_strsub(s, 2, end - s - 2)))
+	{
+		if (ft_strcmp_end(ret, "))"))
+		{
+			free(ret);
+			return (0);
+		}
+		ft_strrmvchr(ft_strlastchr(ret));
+		ft_strrmvchr(ft_strlastchr(ret));
+		return (ret);
+	}
+	return (0);
 }
 
 int				exp_arithmetic_exec(char *pos, char *expr, int *i, char **str)
@@ -39,12 +48,15 @@ int				exp_arithmetic_exec(char *pos, char *expr, int *i, char **str)
 
 	*pos = 0;
 	ret = 0;
-	if (!math_eval(expr, &res) && (strres = ft_itoa(res)))
+	if (expr)
 	{
-		ret = ft_strlen(strres) - 1;
-		*str = ft_3strjoinfree(*str, strres, &(*str)[*i + ft_strlen(expr) + 4], LEFT | MID);
+		if (!math_eval(expr, &res) && (strres = ft_itoa(res)))
+		{
+			ret = ft_strlen(strres) - 1;
+			*str = ft_3strjoinfree(*str, strres, &(*str)[*i + ft_strlen(expr) + 4], LEFT | MID);
+		}
+		ft_strdel(&expr);
 	}
-	ft_strdel(&expr);
 	return (ret);
 }
 

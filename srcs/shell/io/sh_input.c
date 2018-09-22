@@ -9,9 +9,16 @@ static void prompt(t_shell *sh)
 	if ((cwd = env_get_first(sh->env, "PWD")))
 	{
 		if (home && !ft_strcmp(home, cwd))
-			ft_putstr("~");
+		{
+			(sh->last_ret) ? ft_putstr(RED) : ft_putstr(GREEN);
+			ft_putstr("~"RESET);
+		}
 		else
+		{
+			(sh->last_ret) ? ft_putstr(RED) : ft_putstr(GREEN);
 			ft_putstr(cwd);
+			ft_putstr(RESET);
+		}
 	}
 	ft_putstr("$>");
 }

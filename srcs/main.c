@@ -41,6 +41,7 @@ static t_btree	*init_shell_built_in()
 		|| !ft_btree_push(&tree, built_in_cmp, built_in_new("export", sh_export))
 		|| !ft_btree_push(&tree, built_in_cmp, built_in_new("setenv", sh_setenv))
 		|| !ft_btree_push(&tree, built_in_cmp, built_in_new("unset", sh_unset))
+		|| !ft_btree_push(&tree, built_in_cmp, built_in_new("read", sh_read))
 		|| !ft_btree_push(&tree, built_in_cmp, built_in_new("unsetenv", sh_unsetenv)))
 		return (0);
 	return (tree);

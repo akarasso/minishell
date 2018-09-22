@@ -47,6 +47,14 @@ int			math_parser(t_dlst_elem *lst)
 				return (0);
 			}
 		}
+		if (tkn->type == MATH_NUMBER)
+		{
+			if (lst->next && ((t_int_token*)lst->next->data)->type == MATH_NUMBER)
+			{
+				printf("math_eval:: error near '%d'\n", ((t_int_token*)lst->next->data)->value);
+				return (0);
+			}
+		}
 		lst = lst->next;
 	}
 	return (1);

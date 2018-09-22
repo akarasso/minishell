@@ -3,6 +3,5 @@
 .D*
 *.dSYM
 a.out
-test
-42sh
+shell
 */*.gch

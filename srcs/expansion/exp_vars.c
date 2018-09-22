@@ -28,9 +28,9 @@ static void		goto_end_parent(char **s)
 			stack++;
 		if (**s == '}')
 			stack--;
+		(*s)++;
 		if (!stack)
 			break;
-		(*s)++;
 	}
 }
 
@@ -49,12 +49,10 @@ static char		*exp_get_key(char *s)
 		while (*end && (ft_isalpha(*end) || ft_isdigit(*end) || *end == '_'))
 			end++;
 	}
-	if (*end)
-		return (ft_strsub(s, 0, end - s + 1));
-	else
-		return (ft_strsub(s, 0, end - s));
+	return (ft_strsub(s, 0, end - s));
 }
 
+// echo "$PATH"
 int				exp_vars_exec(char *pos, int *i, char **str, t_cmd *cmd)
 {
 	int		ret;

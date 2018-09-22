@@ -1,7 +1,5 @@
 #include "shell.h"
 
-// Si un Malloc fail durant le splitm j'ai pas d'erreur donc a remonter....
-
 void	sh_ast_revsplit_tree(t_ast_node *ast, int(*func)(void *data))
 {
 	sh_ast_revsplit(ast, func);

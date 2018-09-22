@@ -47,7 +47,7 @@ typedef struct	s_redir
 	int		io_number;
 }				t_redir;
 
-typedef struct s_varsexp t_varsexp;
+typedef struct	s_varsexp t_varsexp;
 
 typedef struct	s_varsexp_rules
 {

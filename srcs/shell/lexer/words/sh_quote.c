@@ -16,11 +16,12 @@ void	goto_next_quote(char **str)
 	ptr++;
 	while (*ptr)
 	{
-		if (*ptr == q)
-			break ;
-		if (*ptr == '/')
+		if (*ptr == '\\')
 			ptr++;
-		ptr++;
+		else if (*ptr == q)
+			break ;
+		if (*ptr)
+			ptr++;
 	}
 	*str = ptr;
 }
@@ -31,15 +32,15 @@ int		quote_str_valid(char *s)
 
 	while (*s)
 	{
-		if (is_quote(*s))
+		if (*s == '\\')
+			s++;
+		else if (is_quote(*s))
 		{
 			c = *s;
 			goto_next_quote(&s);
 			if (!is_quote(*s))
 				return (c);
 		}
-		if (*s == '\\')
-			s++;
 		s++;
 	}
 	return (0);

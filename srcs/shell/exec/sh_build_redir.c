@@ -12,16 +12,7 @@ static int		ft_open_redir(char *filepath, int mode)
 	else if (mode == DGREAT)
 		fd = open(filepath, O_RDWR | O_CREAT | O_APPEND, 0666);
 	if (fd == -1)
-	{
-		if (errno == EACCES)
-			ft_putendl("Permission denied");
-		else if (errno == ENOENT)
-			ft_putendl("No such file or directory");
-		else if (errno == EISDIR)
-			ft_putendl("Is a directory");
-		else
-			ft_putendl("Open error");
-	}
+		ft_putendl("Shell:: Open error");
 	return (fd);
 }
 
@@ -44,10 +35,7 @@ static int		heredoc_write(t_redir *redir)
 	int		pfd[2];
 
 	if (pipe(pfd) == -1)
-	{
-		//Pipe error
 		return (-1);
-	}
 	write(pfd[1], redir->to, ft_strlen(redir->to));
 	close(pfd[1]);
 	if (dup2(pfd[0], redir->io_number) == -1)
@@ -72,10 +60,7 @@ static int		apply_redir(t_redir *redir)
 		fd = ft_open_redir(redir->to, redir->type);
 		if (dup2(fd, redir->io_number) == -1)
 		{
-			if (errno == EBADF)
-				ft_putendl("Bad file desc\n");
-			else
-				ft_putendl("Failed to dup\n");
+			ft_putendl("Shell:: Failed to dup\n");
 			return (0);
 		}
 	}

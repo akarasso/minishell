@@ -10,15 +10,17 @@ void	goto_end_arithmetic(char **s)
 	int stack;
 
 	stack = 0;
-	(*s)++;
 	while (**s)
 	{
 		if (**s == '(')
 			stack++;
 		if (**s == ')')
-			stack++;
+			stack--;
 		if (stack < 3 && !ft_strncmp("))", *s, 2))
+		{
+			(*s) += 2;
 			break ;
+		}
 		(*s)++;
 	}
 }
@@ -31,10 +33,15 @@ void	goto_end_word(char **str)
 	while (*ptr && ft_strtab_strncmp_i(g_shell_op, ptr) == -1
 		&& is_redirect(ptr) == -1 && !is_space(*ptr))
 	{
-		if (is_quote(*ptr))
+		if (*ptr == '\\')
+			ptr++;
+		else if (is_quote(*ptr))
 			goto_next_quote(&ptr);
-		if (!ft_strncmp("$((", ptr, 3))
+		else if (!ft_strncmp("$((", ptr, 3))
+		{
+			ptr++;
 			goto_end_arithmetic(&ptr);
+		}
 		if (*ptr)
 			ptr++;
 	}

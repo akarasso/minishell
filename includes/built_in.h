@@ -31,5 +31,6 @@ int				sh_setenv(t_cmd *cmd);
 int				sh_unset(t_cmd *cmd);
 int				sh_unsetenv(t_cmd *cmd);
 char			**sh_read_get_split_val(int flag);
+int				sh_read(t_cmd *cmd);
 
 #endif

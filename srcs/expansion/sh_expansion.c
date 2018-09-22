@@ -35,72 +35,6 @@ static char	*get_home(t_shell *shell)
 	return (0);
 }
 
-// void		*expansion_get_parameter_expansion(char **elem, t_cmd *cmd)
-// {
-// 	char	*last;
-// 	char	*str;
-// 	char	*res;
-// ;
-// 	str = *elem;
-// 	if (!ft_strncmp(str, "${", 2) && *(last = ft_strlastchr(str)) == '}')
-// 	{
-// 		ft_strrmvchr(last);
-// 		ft_strrmvchr(str);
-// 		ft_strrmvchr(str);
-// 		if ((res = exp_var(str, cmd->shell->env)))
-// 		{
-// 			free(str);
-// 			*elem = res;
-// 		}
-// 	}
-// 	return (NULL);
-// }
-
-void		*expansion_get_expansion_aritmetique(char **elem, t_cmd *cmd)
-{
-	char	*tmp;
-	int		res;
-	char	*str;
-
-	(void)cmd;
-	str = *elem;
-	if (!ft_strncmp(str, "$((", 3) && !ft_strcmp_end(str, "))"))
-	{
-		ft_strrmvchr(ft_strlastchr(str));
-		ft_strrmvchr(str);
-		ft_strrmvchr(str);
-		ft_strrmvchr(str);
-		if (!math_eval(str, &res))
-		{
-			if (!(tmp = ft_itoa(res)))
-				return (0);
-			free(str);
-			*elem = tmp;
-		}
-	}
-	return (NULL);
-}
-/*
-** $TRUC
-** will be on the globing ?
-*/
-
-void		*expansion_get_pathname_expansion(char **elem, t_cmd *cmd)
-{
-	char	*str;
-	char	*last;
-
-	str = *elem;
-	if (!ft_strncmp(str, "${", 2) && *(last = ft_strlastchr(str)) == '}')
-	{
-		ft_strrmvchr(last);
-		ft_strrmvchr(str);
-	}
-	(void)elem;
-	(void)cmd;
-	return (NULL);
-}
-
 void		expansion_unquote(char **str)
 {
 	char	*endquote;
@@ -127,6 +61,18 @@ void		expansion_unquote(char **str)
 	}
 }
 
+void		expansion_backslash(char **s) {
+	char	*ptr;
+
+	ptr = *s;
+	while (*ptr)
+	{
+		if (*ptr == '\\')
+			ft_strrmvchr(ptr);
+		ptr++;
+	}
+}
+
 void		sh_expansion(t_cmd *cmd)
 {
 	char		**elem;
@@ -141,8 +87,8 @@ void		sh_expansion(t_cmd *cmd)
 		exp_tilde(elem, cmd, home);
 		exp_vars(elem, cmd);
 		exp_arithmetic(elem);
-		// expansion_get_expansion_aritmetique(elem, cmd);
 		expansion_unquote(elem);
+		expansion_backslash(elem);
 		i++;
 	}
 	free(home);

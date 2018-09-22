@@ -14,10 +14,7 @@ int		parser_check_quote(t_shell *sh)
 			ft_strdel(&sh->cmd);
 			ft_putstr("quote>");
 			get_next_line(0, &sh->cmd);
-			// sh->cmd = ft_strjoinfree("\n", sh->cmd, RIGHT);
 			sh->cmd = ft_3strjoinfree(tkn->value, "\n", sh->cmd, RIGHT);
-			// if (quote_str_valid(((t_str_token*)sh->lexer->last->data)->value))
-				// ft_strrmvchr(ft_strlastchr(((t_str_token*)sh->lexer->last->data)->value));
 			ft_dlst_delelem(sh->lexer, &sh->lexer->last, sh_token_del);
 			sh_tokenize(sh);
 			return (1);

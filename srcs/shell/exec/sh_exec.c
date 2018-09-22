@@ -39,6 +39,7 @@ int			sh_exec(t_shell *sh, t_ast_node *node)
 		else
 		{
 			ret = sh_exec_cmd(sh, node);
+			sh->last_ret = ret;
 			if (!(sh_env_set(&sh->env->private, "?", ft_itoa(ret), RIGHT)))
 				ret = CMD_ERROR;
 			return (ret);
